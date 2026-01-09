@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 5px;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      canvas {
+        border: 1px solid #ddd;
+        margin: 10px;
+      }
+      #preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GroupThem Icon Generator</h1>
+      <p>Click the buttons below to generate and download PNG icons:</p>
+
+      <button onclick="generateAllIcons()">Generate All Icons</button>
+
+      <div id="preview"></div>
+    </div>
+
+    <script>
+      const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+
+      function drawIcon(canvas, size) {
+        const ctx = canvas.getContext("2d");
+        canvas.width = size;
+        canvas.height = size;
+
+        // Gradient background
+        const gradient = ctx.createLinearGradient(0, 0, size, size);
+        gradient.addColorStop(0, "#667eea");
+        gradient.addColorStop(1, "#764ba2");
+        ctx.fillStyle = gradient;
+
+        // Rounded rectangle
+        const radius = size * 0.225;
+        ctx.beginPath();
+        ctx.moveTo(radius, 0);
+        ctx.lineTo(size - radius, 0);
+        ctx.arcTo(size, 0, size, radius, radius);
+        ctx.lineTo(size, size - radius);
+        ctx.arcTo(size, size, size - radius, size, radius);
+        ctx.lineTo(radius, size);
+        ctx.arcTo(0, size, 0, size - radius, radius);
+        ctx.lineTo(0, radius);
+        ctx.arcTo(0, 0, radius, 0, radius);
+        ctx.closePath();
+        ctx.fill();
+
+        // Draw people icons
+        ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+
+        const scale = size / 512;
+
+        // Person 1
+        ctx.beginPath();
+        ctx.arc(180 * scale, 200 * scale, 45 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(
+          180 * scale,
+          290 * scale,
+          60 * scale,
+          50 * scale,
+          0,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+
+        // Person 2
+        ctx.beginPath();
+        ctx.arc(332 * scale, 200 * scale, 45 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(
+          332 * scale,
+          290 * scale,
+          60 * scale,
+          50 * scale,
+          0,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+
+        // Person 3 (brighter)
+        ctx.fillStyle = "rgb(255, 255, 255)";
+        ctx.beginPath();
+        ctx.arc(256 * scale, 280 * scale, 45 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(
+          256 * scale,
+          370 * scale,
+          60 * scale,
+          50 * scale,
+          0,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+
+        // Dice dots
+        ctx.fillStyle = "#4CAF50";
+        ctx.beginPath();
+        ctx.arc(430 * scale, 100 * scale, 12 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(430 * scale, 140 * scale, 12 * scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(460 * scale, 120 * scale, 12 * scale, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function downloadCanvas(canvas, filename) {
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
+
+      function generateAllIcons() {
+        const preview = document.getElementById("preview");
+        preview.innerHTML = "";
+
+        sizes.forEach((size) => {
+          const canvas = document.createElement("canvas");
+          drawIcon(canvas, size);
+
+          const container = document.createElement("div");
+          container.style.textAlign = "center";
+
+          const label = document.createElement("p");
+          label.textContent = `${size}x${size}`;
+          label.style.margin = "5px";
+
+          const btn = document.createElement("button");
+          btn.textContent = "Download";
+          btn.onclick = () =>
+            downloadCanvas(canvas, `icon-${size}x${size}.png`);
+
+          container.appendChild(canvas);
+          container.appendChild(label);
+          container.appendChild(btn);
+          preview.appendChild(container);
+        });
+
+        alert(
+          'Icons generated! Click each "Download" button to save them to your icons folder.'
+        );
+      }
+    </script>
+  </body>
+</html>
