@@ -1,3 +1,32 @@
+/* Comic Book Fonts - Local Files */
+@font-face {
+  font-family: "Titan One";
+  src: url("../fonts/TitanOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Comic Neue";
+  src: url("../fonts/ComicNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Comic Neue";
+  src: url("../fonts/ComicNeue-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fredoka One";
+  src: url("../fonts/FredokaOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,24 +34,25 @@
 }
 
 :root {
-  --primary-color: #4caf50;
-  --secondary-color: #45a049;
-  --danger-color: #f44336;
-  --text-color: #333;
-  --bg-color: #f5f5f5;
-  --card-bg: #ffffff;
-  --border-color: #ddd;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --primary-color: #ff006e;
+  --secondary-color: #ffbe0b;
+  --danger-color: #fb5607;
+  --accent-color: #3a86ff;
+  --text-color: #2b2d42;
+  --bg-color: #fff4e6;
+  --card-bg: #ffd60a;
+  --border-color: #2b2d42;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: "Comic Neue", cursive;
+  background: linear-gradient(135deg, #3a86ff 0%, #ff006e 50%, #ffbe0b 100%);
   min-height: 100vh;
   color: var(--text-color);
-  line-height: 1.5;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .container {
@@ -36,32 +66,41 @@ body {
 
 header {
   text-align: center;
-  color: black;
+  color: var(--text-color);
   margin-bottom: 15px;
-  padding: 10px 0;
+  padding: 15px 0;
   display: flex;
   flex-direction: column;
+  text-shadow: 3px 3px 0px var(--accent-color), 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   margin-bottom: 5px;
+  font-family: "Titan One", cursive;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  font-weight: 900;
 }
 
 header p {
-  font-size: 0.9rem;
-  opacity: 0.9;
+  font-size: 1.1rem;
+  opacity: 1;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  color: var(--accent-color);
 }
 
 main {
-  background: var(--card-bg);
-  border-radius: 12px;
+  background: var(--bg-color);
+  border-radius: 20px;
   padding: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   margin-bottom: 0;
   flex: 1;
   display: flex;
   overflow: hidden;
+  border: 4px solid var(--text-color);
 }
 
 main.main-layout {
@@ -88,9 +127,11 @@ header {
   flex: 1;
   overflow-y: auto;
   min-height: 0;
-  border: 2px solid #667eea;
-  border-radius: 12px;
+  border: 4px solid var(--text-color);
+  border-radius: 16px;
   padding: 20px;
+  background: var(--card-bg);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .left-panel::-webkit-scrollbar {
@@ -184,52 +225,74 @@ header {
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
+  margin-bottom: 8px;
+  font-weight: 700;
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-family: "Comic Neue", cursive;
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
 }
 
 .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-family: inherit;
+  padding: 12px;
+  border: 3px solid var(--text-color);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: "Comic Neue", cursive;
+  font-weight: 600;
   resize: vertical;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 5px 5px 0px var(--secondary-color);
+  transform: translate(-2px, -2px);
 }
 
 .form-group input[type="number"] {
   width: 100%;
-  padding: 10px;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: border-color 0.3s;
+  padding: 12px;
+  border: 3px solid var(--text-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  transition: all 0.3s;
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .form-group input[type="number"]:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 5px 5px 0px var(--secondary-color);
+  transform: translate(-2px, -2px);
 }
 
 button {
-  padding: 10px 18px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: "Comic Neue", cursive;
+  border: 3px solid var(--text-color);
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
   margin-right: 8px;
   margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -238,30 +301,32 @@ button {
 }
 
 .btn-primary:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  background-color: #ff0055;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
-  background-color: #757575;
+  background-color: var(--accent-color);
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #616161;
-  transform: translateY(-2px);
+  background-color: #2870dd;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .btn-save {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   flex: 1;
 }
 
 .btn-save:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
+  background-color: #ffa500;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .save-load-section {
@@ -278,32 +343,41 @@ button {
 
 .list-name-input {
   flex: 1;
-  padding: 10px;
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: border-color 0.3s;
+  padding: 12px;
+  border: 3px solid var(--text-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "Comic Neue", cursive;
+  font-weight: 600;
+  transition: all 0.3s;
+  background: white;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .list-name-input:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 5px 5px 0px var(--accent-color);
+  transform: translate(-2px, -2px);
 }
 
 .saved-lists {
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid var(--border-color);
+  border-top: 3px solid var(--text-color);
   display: flex;
   flex-direction: column;
 }
 
 .saved-lists h4 {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  color: var(--text-color);
-  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-weight: 800;
   flex-shrink: 0;
+  font-family: "Comic Neue", cursive;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .lists-container {
@@ -334,30 +408,41 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
+  padding: 12px;
+  background-color: white;
+  border-radius: 12px;
+  border: 3px solid var(--text-color);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+
+.list-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
 }
 
 .list-item-name {
   flex: 1;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-color);
   word-break: break-word;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-weight: 700;
+  font-family: "Comic Neue", cursive;
 }
 
 .list-item-name:hover {
-  background-color: rgba(76, 175, 80, 0.1);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .list-item-name.editing {
-  background-color: white;
-  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  border: 2px solid var(--text-color);
+  color: white;
 }
 
 .list-item-input {
@@ -412,7 +497,10 @@ button {
 .output-section h2 {
   margin-bottom: 0;
   color: var(--primary-color);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-family: "Titan One", cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .close-modal-btn {
@@ -446,28 +534,53 @@ button {
 }
 
 .group-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--accent-color) 100%
+  );
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25);
   color: white;
   animation: fadeIn 0.5s ease-in;
+  border: 3px solid var(--text-color);
+  position: relative;
+}
+
+.group-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: white;
+  opacity: 0.5;
 }
 
 .group-card h3 {
-  margin-bottom: 10px;
-  font-size: 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Comic Neue", cursive;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .member-count {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 1;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 2px solid white;
 }
 
 .group-card ul {
@@ -475,20 +588,32 @@ button {
 }
 
 .group-card li {
-  padding: 6px 10px;
-  margin-bottom: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
   backdrop-filter: blur(10px);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: "Comic Neue", cursive;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s;
+}
+
+.group-card li:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
 }
 
 footer {
   text-align: center;
   color: white;
-  padding: 10px;
-  opacity: 0.8;
-  font-size: 0.85rem;
+  padding: 12px;
+  opacity: 1;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: "Comic Neue", cursive;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .hidden {
